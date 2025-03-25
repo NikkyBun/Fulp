@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Styles/styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
     <script type="importmap">
         {
           "imports": {
-            "three": "https://cdn.jsdelivr.net/npm/three@<0.174.0>/build/three.module.js",
-            "three/addons/": "https://cdn.jsdelivr.net/npm/three@<0.174.0>/examples/jsm/"
+            "three": "https://cdn.jsdelivr.net/npm/three@0.174.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.174.0/examples/jsm/"
           }
         }
-      </script>
+    </script>
     <title>3D viewport</title>
 </head>
 <body>
@@ -30,7 +29,7 @@
         </div>
     </div>
     
-    <script>
+    <script type="module">
         import * as THREE from 'three';
 
         const canvas = document.getElementById('webgl-canvas');
@@ -51,11 +50,11 @@
         const renderer = new THREE.WebGLRenderer({ canvas });
         renderer.setSize(canvas.width, canvas.height);
 
-        
+
 
         const textureLoader = new THREE.TextureLoader();
         const texture = textureLoader.load(
-            'sehtxgh.png',
+            'Styles/sehtxgh.png',
             () => console.log('Texture loaded successfully'),
             undefined,
             (error) => console.error('Error loading texture:', error)
@@ -81,10 +80,10 @@
         scene.add(cube);
         geometry.computeVertexNormals();
         // Ambient light (soft background light)
-        const ambientLight = new THREE.AmbientLight(0xffffff, 5); // color, intensity
+        const ambientLight = new THREE.AmbientLight(0xffffff, 1); // color, intensity
         scene.add(ambientLight);
         // Directional light (like sunlight)
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 10);
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
         directionalLight.position.set(3, 3, 3); // Position the light source
         scene.add(directionalLight);
 
@@ -132,6 +131,5 @@
             document.querySelector('.window').style.display = 'none';
         });
     </script>
-
 </body>
 </html>
