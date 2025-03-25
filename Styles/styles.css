@@ -1,0 +1,51 @@
+body {
+    background-color: #727272;
+    font-family: "MS Sans Serif", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.window {
+    width: 780px;
+    height: 480px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    border-radius: 0;
+    box-shadow: 2px 2px 0px #000000;
+}
+
+.title-bar {
+    background-color: #000080;
+    color: white;
+    padding: 5px 10px;
+    font-weight: bold;
+    text-align: left;
+    font-size: 16px;
+}
+
+.title-bar .close-btn {
+    float: right;
+    background-color: #ff0000;
+    border: 1px solid #800000;
+    color: white;
+    padding: 2px 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.window-content {
+    padding: 10px;
+    color: #000000;
+    font-size: 14px;
+    height: 480px;
+    overflow: auto;
+}
+
+.close-btn:hover {
+    background-color: #ff6868;
+    color: white;
+}
+.canvas {
+    border: 2px #000000;
+}
