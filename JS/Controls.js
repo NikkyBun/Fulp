@@ -47,8 +47,8 @@ export function setupControls(camera, canvas) {
         if (keys['s']) camera.position.addScaledVector(forward, -moveSpeed);
     
         // Sideways movement (A/D)
-        if (keys['a']) camera.position.addScaledVector(right, -moveSpeed);
-        if (keys['d']) camera.position.addScaledVector(right, moveSpeed);
+        if (keys['d']) camera.position.addScaledVector(right, -moveSpeed);
+        if (keys['a']) camera.position.addScaledVector(right, moveSpeed);
     }
 
     function animate() {
