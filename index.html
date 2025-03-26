@@ -12,6 +12,15 @@
           }
         }
     </script>
+    <script type="module" src="JS/main.js"></script>
+    
+
+    <!-- Standard favicon -->
+    <link rel="icon" href="Styles/favicon/favicon.ico" type="image/x-icon">
+
+    <!-- For high-res displays -->
+    <link rel="icon" href="Styles/favicon/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="Styles/favicon/favicon-16x16.png" sizes="16x16" type="image/png">
     <title>3D viewport</title>
 </head>
 <body>
@@ -24,112 +33,10 @@
         <div class="window-content">
             <p>Welcome to my silly little site!</p>
             <div class="canvas">
-                <canvas id="webgl-canvas" width="380" height="380"></canvas>
+                <canvas id="webgl-canvas" width="480" height="480"></canvas>
             </div>
         </div>
     </div>
     
-    <script type="module">
-        import * as THREE from 'three';
-
-        const canvas = document.getElementById('webgl-canvas');
-
-        // Create scene
-        const scene = new THREE.Scene();
-
-        // Create camera
-        const camera = new THREE.PerspectiveCamera(
-            75, // Field of view
-            canvas.width / canvas.height, // Aspect ratio
-            0.1, // Near plane
-            1000 // Far plane
-        );
-        camera.position.z = 3;
-
-        // Create renderer
-        const renderer = new THREE.WebGLRenderer({ canvas });
-        renderer.setSize(canvas.width, canvas.height);
-
-
-
-        const textureLoader = new THREE.TextureLoader();
-        const texture = textureLoader.load(
-            'Styles/sehtxgh.png',
-            () => console.log('Texture loaded successfully'),
-            undefined,
-            (error) => console.error('Error loading texture:', error)
-        );
-        /*
-        let texture;
-
-        textureLoader.load(
-            'sehtxgh.png',
-            (loadedTexture) => {
-                texture = loadedTexture;
-                console.log('Texture loaded:', texture);
-            },
-            undefined,
-            (error) => console.error('Error loading texture:', error)
-        );
-        */
-        // Create a cube
-        const geometry = new THREE.BoxGeometry();
-        const material = new THREE.MeshStandardMaterial({ map: texture });
-
-        const cube = new THREE.Mesh(geometry, material);
-        scene.add(cube);
-        geometry.computeVertexNormals();
-        // Ambient light (soft background light)
-        const ambientLight = new THREE.AmbientLight(0xffffff, 1); // color, intensity
-        scene.add(ambientLight);
-        // Directional light (like sunlight)
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-        directionalLight.position.set(3, 3, 3); // Position the light source
-        scene.add(directionalLight);
-
-        // Animation loop
-        function animate() {
-            requestAnimationFrame(animate);
-
-            cube.rotation.x += 0.002;
-            cube.rotation.y += 0.003;
-
-            renderer.render(scene, camera);
-        }
-
-        // Add mouse interaction
-        let isDragging = false;
-        let previousMousePosition = { x: 0, y: 0 };
-
-        canvas.addEventListener('mousedown', (event) => {
-            isDragging = true;
-        });
-
-        canvas.addEventListener('mouseup', () => {
-            isDragging = false;
-        });
-
-        canvas.addEventListener('mousemove', (event) => {
-            if (isDragging) {
-            const deltaX = event.clientX - previousMousePosition.x;
-            const deltaY = event.clientY - previousMousePosition.y;
-
-            cube.rotation.y += deltaX * 0.01;
-            cube.rotation.x += deltaY * 0.01;
-            }
-
-            previousMousePosition = {
-            x: event.clientX,
-            y: event.clientY
-            };
-        });
-
-        animate();
-
-        // Close button behavior
-        document.querySelector('.close-btn').addEventListener('click', () => {
-            document.querySelector('.window').style.display = 'none';
-        });
-    </script>
 </body>
 </html>
