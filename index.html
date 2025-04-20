@@ -34,6 +34,16 @@
             <p>Welcome to my silly little site!</p>
             <div class="canvas">
                 <canvas id="webgl-canvas" width="480" height="480"></canvas>
+              
+                <!-- Axis Widget and Labels -->
+                <div class="widget-container">
+                  <canvas id="axisCanvas" class="widget-canvas"></canvas>
+                  <div class="camera-position">
+                    <p style="color: red;" id="cameraX">X: 0</p>
+                    <p style="color: green;" id="cameraY">Y: 0</p>
+                    <p style="color: blue;" id="cameraZ">Z: 0</p>
+                  </div>
+                </div>
             </div>
         </div>
     </div>
